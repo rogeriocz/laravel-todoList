@@ -85,7 +85,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right pc-h-dropdown">
                         <div class=" dropdown-header">
-                            <h5 class="text-overflow m-0"><span class="badge bg-light-primary"><a href="https://gumroad.com/dashboardkit" target="_blank">Upgrade to Pro</a></span></h5>
+                            <h5 class="text-overflow m-0"><span class="badge bg-light-primary"><a href="#" target="_blank">Activo</a></span></h5>
                         </div>
 
                         <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

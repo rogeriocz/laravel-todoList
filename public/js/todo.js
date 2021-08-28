@@ -5,11 +5,11 @@ const todoList = document.getElementById("todo-list");
 const templateTodoList = document.getElementById("template-todo-list");
 const fragment = document.createDocumentFragment();
 const btnAgregarTodo = document.getElementById('btn-agregar-todo');
-let lists = {};
+
 let title = document.getElementById("inputTitle");
 let _token = document.getElementById("token");
 const completed = true;
-let resultados = ''
+
 
 // formularioAgregarTodolist.forEach(element => console.log(element));
 
@@ -17,9 +17,10 @@ formularioAgregarTodolist.addEventListener('submit', function(event){
     event.preventDefault();
     addTodo();
     // DESPUES DE CREAR UN REGISTRO NUEVO
-    listTodo()
+
 
 });
+
 // MUESTRA LISTA DE TODOLIST
 listTodo()
 
@@ -40,18 +41,18 @@ async function addTodo() {
     });
 
     const data = await res.json();
+    data.listTodo();
     console.log(data);
     clearInput();
 
 }
-
+// LIMPIAR INPUT TITLE
 function clearInput() {
     title.value = "";
 }
 
 
-//web api
-//Conectar al server
+
 //traer lista de tareas
 async function listTodo() {
 

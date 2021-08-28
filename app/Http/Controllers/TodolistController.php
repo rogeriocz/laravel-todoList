@@ -59,8 +59,5 @@ class TodolistController extends Controller
         return $updateTodo;
     }
 
-    public function template()
-    {
-        return view('todolist.template');
-    }
+
 }
