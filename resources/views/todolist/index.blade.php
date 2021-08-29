@@ -2,50 +2,60 @@
 
 @section('content')
 
-    <div class="row">
-        <!--begin::Col-->
-        <div class="col-xl-6 col-lg-6 col-md-6">
-            <!--begin::List Widget 3-->
+<div class="row">
+
+     {{-- FORMULARIO PARA AGREGAR REGISTROS A TODOLIST --}}
+     <div class="col-xl-4 col-lg-4 col-md-4">
+        <div class="card card-bordered">
+            <div class="card-header">
+                <h3 class="card-title">Nuevo</h3>
+                <div class="card-toolbar"></div>
+            </div>
+            <form id="formulario-agregar-todolist" method="post" onsubmit=" aplication.Agregar()">
+                <div class="card-body">
+                    {{-- <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" class="form-control" /> --}}
+                    <input id="inputName" type="text" class="form-control" placeholder="Title" />
+                </div>
+                <div class="card-footer">
+                    <button id="btn-agregar-todo" class="btn btn-light-success">Agregar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{-- LISTA DE REGISTROS TODOLIST --}}
+        <div class="col-xl-8 col-lg-8 col-md-8">
             <div class="card card-xl-stretch mb-5 mb-xl-4">
-                <!--begin::Header-->
                 <div class="card-header border-0">
-                    <h3 class="card-title fw-bolder text-dark">Todo</h3>
+                    <h3 class="card-title fw-bolder text-dark">Todo List</h3>
                     <div class="card-toolbar"></div>
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
                 <div class="card-body pt-2">
-                    <!--begin::Item-->
-                    <div id="todo-list" class="mb-3">
+                    <div class="mb-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="todo-list">
 
+                            </tbody>
+
+                        </table>
                     </div>
                 </div>
-                <!--end::Body-->
-            </div>
-            <!--end:List Widget 3-->
-        </div>
-        <!--end::Col-->
-
-
-        <div class="col-xl-6 col-lg-6 col-md-6">
-            <div class="card card-bordered">
-                <div class="card-header">
-                    <h3 class="card-title">Nueva tarea</h3>
-                    <div class="card-toolbar"></div>
-                </div>
-                <form id="formulario-agregar-todolist">
-                    <div class="card-body">
-                        <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" class="form-control" />
-                        <input id="inputTitle" type="text" class="form-control" placeholder="Title" />
-                    </div>
-                    <div class="card-footer">
-                        <button id="btn-agregar-todo" class="btn btn-light-success">Agregar</button>
-                    </div>
-                </form>
             </div>
         </div>
+
+
 
     </div>
+
+
+
 
 
 

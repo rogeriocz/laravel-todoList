@@ -6,65 +6,33 @@ const templateTodoList = document.getElementById("template-todo-list");
 const fragment = document.createDocumentFragment();
 const btnAgregarTodo = document.getElementById('btn-agregar-todo');
 
-let title = document.getElementById("inputTitle");
+let inputName = document.getElementById("inputName");
 let _token = document.getElementById("token");
 const completed = true;
 
 
-// formularioAgregarTodolist.forEach(element => console.log(element));
+const aplication = new function(){
 
-formularioAgregarTodolist.addEventListener('submit', function(event){
-    event.preventDefault();
-    addTodo();
-    // DESPUES DE CREAR UN REGISTRO NUEVO
+    this.lista = todoList;
+    this.name = inputName;
+    console.log(this.lista)
 
+    this.Leer = () => {
+        let datos = "";
 
-});
-
-// MUESTRA LISTA DE TODOLIST
-listTodo()
-
-
-//Agregar nueva Todo List
-async function addTodo() {
-    let obj = {
-        title: title.value,
-    };
-    const res = await fetch("http://localhost/todolist/newtodo", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "X-CSRF-TOKEN": _token.value,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(obj),
-    });
-
-    const data = await res.json();
-    data.listTodo();
-    console.log(data);
-    clearInput();
-
-}
-// LIMPIAR INPUT TITLE
-function clearInput() {
-    title.value = "";
-}
-
-
-
-//traer lista de tareas
-async function listTodo() {
-
-    const res = await fetch(urlList)
-    // Promesa la respuesta y convertirla a JSON
-    .then((respuesta) => respuesta.json())
-    // JSON -> Data -> Renderiza informacion del navegador
-    .then((responseJson) => {
-        responseJson.data.forEach((item) => {
-            const title = document.createElement("h2");
-            todoList.appendChild(title);
-            title.textContent = item.title;
+        fetch(urlList)
+        .then((respuesta) => respuesta.json())
+        .then((respuestaJson) =>{
+            console.log(respuestaJson)
         })
-    });
+        .catch(console.log)
+        //datos = "<tr><td>1</td><td>Proyecto 1</td><td>Editar | Eliminar</td></tr>";
+        return this.lista.innerHTML = datos;
+    }
+
+    /* this.Agregar = () => {
+        console.log(name.value);
+    } */
 }
+
+aplication.Leer();

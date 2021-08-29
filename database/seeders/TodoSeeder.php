@@ -15,8 +15,8 @@ class TodoSeeder extends Seeder
     public function run()
     {
 
-        Todolist::create(['title' => "Estudiar JavaScript", 'completed' => true]);
-        Todolist::create(['title' => "Terminar proyecto 1", 'completed' => true]);
+        Todolist::create(['name' => "Estudiar JavaScript", 'completed' => true]);
+        Todolist::create(['name' => "Terminar proyecto 1", 'completed' => true]);
 
     }
 }
