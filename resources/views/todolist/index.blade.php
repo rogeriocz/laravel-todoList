@@ -11,9 +11,9 @@
                 <h3 class="card-title">Nuevo</h3>
                 <div class="card-toolbar"></div>
             </div>
-            <form id="formulario-agregar-todolist" method="post" onsubmit=" aplication.Agregar()">
+            <form id="formulario-agregar-todolist">
                 <div class="card-body">
-                    {{-- <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" class="form-control" /> --}}
+                    <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" class="form-control" />
                     <input id="inputName" type="text" class="form-control" placeholder="Title" />
                 </div>
                 <div class="card-footer">
