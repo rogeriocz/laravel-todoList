@@ -11,11 +11,12 @@
                 <h3 class="card-title">Nuevo</h3>
                 <div class="card-toolbar"></div>
             </div>
-            <form id="formulario-agregar-todolist">
+            <form id="formulario-add">
                 <div class="card-body">
                     <input type="hidden" id="token" name="_token" value="{{ csrf_token() }}" class="form-control" />
                     <input id="inputName" type="text" class="form-control" placeholder="Title" />
                 </div>
+                <div id="div-alerta"></div>
                 <div class="card-footer">
                     <button id="btn-agregar-todo" class="btn btn-light-success">Agregar</button>
                 </div>
@@ -82,7 +83,8 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/todo.js') }}"></script>
+    <script src="{{ asset('js/index.js') }}" type="module"></script>
+    <script src="{{ asset('js/nuevocliente.js')}}" type="module"></script>
 
 
 @endpush
