@@ -68,6 +68,7 @@ const fetchDataLeer = async () => {
                 const name = document.createElement("h2");
                 todoList.appendChild(name);
                 name.textContent = item.name;
+
             })
         });
     } catch (error) {

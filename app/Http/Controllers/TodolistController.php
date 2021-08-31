@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Todolist;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -10,14 +10,14 @@ class TodolistController extends Controller
 {
     public function index()
     {
-        $todolists = Todolist::orderBy('id', 'desc')->get();
+        $todolists = Item::orderBy('id', 'desc')->get();
         return view('todolist.index', compact('todolists'));
 
     }
 
     public function list()
     {
-        $todolists = Todolist::orderBy('id', 'desc')->get();
+        $todolists = Item::orderBy('id', 'desc')->get();
 
         $response['data'] = $todolists;
 
@@ -40,7 +40,7 @@ class TodolistController extends Controller
                 'errors' => $validator->messages()
             ]);
         }else{
-            $todo = new Todolist();
+            $todo = new Item();
             $todo->name = $request->input('name');
             $todo->completed = $completed;
             $todo->save();
@@ -52,7 +52,7 @@ class TodolistController extends Controller
 
     public function update(Request $request)
     {
-        $updateTodo = Todolist::find($request->id);
+        $updateTodo = Item::find($request->id);
         $updateTodo->update(['title' => $request->title]);
 
 
