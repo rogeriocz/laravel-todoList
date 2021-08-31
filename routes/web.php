@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\TodolistController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,12 +16,15 @@ Route::get('/dashboard', function () {
 //CRUD DE PRACTICA CON FETCH JAVASCRIPT
 Route::group(['middleware' => ['auth']], function () {
 
-    Route::get('todolist/template', [TodolistController::class, 'template'])->name('template');
-    Route::get('todolist/list', [TodolistController::class, 'list'])->name('list');
-    Route::get('todolist', [TodolistController::class, 'index'])->name('todolist.index');
-    Route::post('todolist/newtodo', [TodolistController::class, 'store'])->name('todolist.store');
-    Route::put('todolist/updatetodolist/{id}', [TodolistController::class, 'update'])->name('todolist.update');
-    Route::delete('todolist/deletetodolist/{id}', [TodolistController::class, 'delete'])->name('todolist.delete');
+
+    Route::get('items/list', [ItemController::class, 'viewList']);
+
+    Route::get('items', [ItemController::class, 'index'])->name('items.index');
+    Route::post('items', [ItemController::class, 'store'])->name('items.store');
+    Route::put('items/{item}', [ItemController::class, 'update'])->name('items.update');
+    Route::delete('items/{item}', [ItemController::class, 'delete'])->name('items.delete');
+
+
 
 });
 

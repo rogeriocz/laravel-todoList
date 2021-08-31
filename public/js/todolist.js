@@ -1,5 +1,5 @@
 //Variables
-const urlList = "http://localhost/todolist/list";
+const urlList = "http://localhost/items/list";
 const formularioAgregarTodolist = document.getElementById("formulario-add");
 const todoList = document.getElementById("todo-list");
 const templateTodoList = document.getElementById("template-todo-list");
@@ -33,7 +33,7 @@ async function addTodo() {
     let obj = {
         name: inputName.value,
     };
-    const res = await fetch("http://localhost/todolist/newtodo", {
+    const res = await fetch("http://localhost/items", {
         method: "POST",
         mode: "cors",
         headers: {
