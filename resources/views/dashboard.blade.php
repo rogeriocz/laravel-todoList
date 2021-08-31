@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
             <br>
-            <a href="{{route('todolist.index')}}" target="_blank" rel="noopener noreferrer">TodoList</a>
+            <a href="{{route('items.index')}}" target="_blank" rel="noopener noreferrer">TodoList</a>
         </h2>
     </x-slot>
 

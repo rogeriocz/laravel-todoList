@@ -10,8 +10,8 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $todolists = Item::orderBy('id', 'desc')->get();
-        return view('todolist.index', compact('todolists'));
+        $items = Item::orderBy('id', 'desc')->get();
+        return view('todolist.index', compact('items'));
 
     }
 
