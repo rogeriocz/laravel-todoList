@@ -83,8 +83,8 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/index.js') }}" type="module"></script>
-    <script src="{{ asset('js/nuevocliente.js')}}" type="module"></script>
+    <script src="{{ asset('js/todolist.js')}}"></script>
+
 
 
 @endpush

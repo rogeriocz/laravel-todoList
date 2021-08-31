@@ -30,7 +30,7 @@ class TodolistController extends Controller
         $completed = true;
 
         $validator = Validator::make($request->all(), [
-            'title' => 'required',
+            'name' => 'required',
         ]);
 
         if($validator->fails())
@@ -41,7 +41,7 @@ class TodolistController extends Controller
             ]);
         }else{
             $todo = new Todolist();
-            $todo->title = $request->input('title');
+            $todo->name = $request->input('name');
             $todo->completed = $completed;
             $todo->save();
 
