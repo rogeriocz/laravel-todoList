@@ -8,23 +8,38 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
+    /**
+     * Muestra la vista index del todoList
+     *
+     *
+     */
     public function index()
     {
-        $items = Item::orderBy('id', 'desc')->get();
-        return view('todolist.index', compact('items'));
+
+        return view('todolist.index');
 
     }
 
+    /**
+     * Retorna la lista de items en formato Json.
+     *
+     * @return items/list
+     */
     public function viewList()
     {
-        $todolists = Item::orderBy('id', 'desc')->get();
+        $items = Item::orderBy('id', 'desc')->get();
 
-        $response['data'] = $todolists;
+        $response['data'] = $items;
 
         return response()->json($response);
     }
 
 
+    /**
+     * Función para crear nuevos items.
+     *
+     * returna mensaje en formato json
+     */
     public function store(Request $request)
     {
         $completed = true;
@@ -40,22 +55,39 @@ class ItemController extends Controller
                 'errors' => $validator->messages()
             ]);
         }else{
-            $todo = new Item();
-            $todo->name = $request->input('name');
-            $todo->completed = $completed;
-            $todo->save();
+            $item = new Item();
+            $item->name = $request->input('name');
+            $item->completed = $completed;
+            $item->save();
 
             return json_encode(["msg" => "Tarea agregada"]);
         }
 
     }
 
+    /**
+     * Función para actualizar items.
+     *
+     *
+     */
     public function update(Request $request)
     {
-        $updateTodo = Item::find($request->id);
-        $updateTodo->update(['title' => $request->title]);
+        $completed = true;
+        $item = Item::find($request->id);
+        $item->name = $request->name;
+        $item->completed = $completed;
 
+        return $item;
+    }
 
-        return $updateTodo;
+    /**
+     * Función para eliminar items.
+     *
+     *
+     */
+    public function destroy($id)
+    {
+        $item = Item::find($id);
+        $item->delete();
     }
 }
