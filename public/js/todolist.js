@@ -1,5 +1,5 @@
 //Variables
-const urlList = "http://localhost/items/list";
+const urlList = "http://localhost/api/items";
 const formularioAgregarTodolist = document.getElementById("formulario-add");
 const todoList = document.getElementById("todo-list");
 const btnAgregarTodo = document.getElementById("btn-agregar-todo");
