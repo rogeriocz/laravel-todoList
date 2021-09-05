@@ -67,8 +67,6 @@ class ItemController extends Controller
 
     /**
      * Función para actualizar items.
-     *
-     *
      */
     public function update(Request $request)
     {
@@ -82,12 +80,10 @@ class ItemController extends Controller
 
     /**
      * Función para eliminar items.
-     *
-     *
      */
-    public function destroy($id)
+    public function destroy(Item $item)
     {
-        $item = Item::find($id);
+        $item = Item::find($item);
         $item->delete();
     }
 }
