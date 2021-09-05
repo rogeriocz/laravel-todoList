@@ -21,21 +21,6 @@ class ItemController extends Controller
     }
 
     /**
-     * Retorna la lista de items en formato Json.
-     *
-     * @return items/list
-     */
-    public function viewList()
-    {
-        $items = Item::orderBy('id', 'desc')->get();
-
-        $response['data'] = $items;
-
-        return response()->json($response);
-    }
-
-
-    /**
      * Función para crear nuevos items.
      *
      * returna mensaje en formato json
