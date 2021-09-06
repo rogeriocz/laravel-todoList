@@ -10,26 +10,7 @@ const tmpl = document.getElementById("template-item-tr").content;
 const fragment = document.createDocumentFragment();
 const btnDelete = document.getElementById('btn-delete');
 
-/**
- * lee los elemntos de la tabla por medio de la clase btnBorrar
- * y mostramos el id de la fila para eliminarlos desde la funcion deleteItem(id);
- */
-const on = (element, event, selector, handler) => {
-    console.log(event)
 
-    element.addEventListener(event, e => {
-        if(e.target.closest(selector)){
-            handler(e)
-        }
-    })
-}
- on(document, 'click', '.btnBorrar', e => {
-    const form = e.target.parentNode
-    const fila  = form.firstElementChild
-    const id = fila.getAttribute('data-id')
-    console.log(id)
-    deleteItem(id);
- });
 
 document.addEventListener("DOMContentLoaded", () => {
     // MUESTRA LISTA DE TODOLIST
@@ -77,9 +58,31 @@ function clearInput() {
     inputName.value = "";
 }
 
-// Eliminar item
+/**
+ * lee los elemntos de la tabla por medio de la clase btnBorrar
+ * y mostramos el id de la fila para eliminarlos desde la funcion deleteItem(id);
+ */
+ const on = (element, event, selector, handler) => {
+    console.log(event)
 
+    element.addEventListener(event, e => {
+        if(e.target.closest(selector)){
+            handler(e)
+        }
+    })
+}
+ on(document, 'click', '.btnBorrar', e => {
+    const form = e.target.parentNode
+    const fila  = form.firstElementChild
+    const id = fila.getAttribute('data-id')
+    console.log(id)
+    deleteItem(id);
+ });
 
+/**
+ * Funcion para eliminar items
+ *
+ */
 async function deleteItem(id) {
     const res = await fetch("http://localhost/items/" + id, {
         method: "POST",
