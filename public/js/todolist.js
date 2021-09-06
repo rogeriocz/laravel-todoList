@@ -84,11 +84,11 @@ function clearInput() {
  *
  */
 async function deleteItem(id) {
-    const res = await fetch("http://localhost/items/" + id, {
+    const res = await fetch("http://localhost/api/items/" + id, {
         method: "POST",
         mode: "cors",
         headers: {
-            "X-CSRF-TOKEN": _token.value,
+
             "Content-Type": "application/json"
         },
         body: JSON.stringify({

@@ -25,3 +25,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // /api/items
 Route::get('items', [ItemController::class, 'index']);
+Route::delete('items/{id}', [ItemController::class, 'destroy'])->name('api.items.delete');
