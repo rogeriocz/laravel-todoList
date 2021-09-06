@@ -8,6 +8,28 @@ let _token = document.getElementById("token");
 const completed = true;
 const tmpl = document.getElementById("template-item-tr").content;
 const fragment = document.createDocumentFragment();
+const btnDelete = document.getElementById('btn-delete');
+
+/**
+ * lee los elemntos de la tabla por medio de la clase btnBorrar
+ * y mostramos el id de la fila para eliminarlos desde la funcion deleteItem(id);
+ */
+const on = (element, event, selector, handler) => {
+    console.log(event)
+
+    element.addEventListener(event, e => {
+        if(e.target.closest(selector)){
+            handler(e)
+        }
+    })
+}
+ on(document, 'click', '.btnBorrar', e => {
+    const form = e.target.parentNode
+    const fila  = form.firstElementChild
+    const id = fila.getAttribute('data-id')
+    console.log(id)
+    deleteItem(id);
+ });
 
 document.addEventListener("DOMContentLoaded", () => {
     // MUESTRA LISTA DE TODOLIST
@@ -19,9 +41,10 @@ formularioAgregarTodolist.addEventListener("submit", function(event) {
     addTodo();
 });
 
-/* btnEliminarTodo.addEventListener("click", function(event) {
+/* btnDelete.addEventListener("submit", function(event) {
     event.preventDefault();
-    deleteItem();
+    console.log(btnDelete);
+    //deleteItem();
 }); */
 
 //Agregar nueva Todo List
@@ -29,6 +52,7 @@ async function addTodo() {
     let obj = {
         name: inputName.value
     };
+
 
     // URL completa
     // /items ->   doominioActual/items (indeppendientemente ddde dónde esttés)
@@ -54,10 +78,10 @@ function clearInput() {
 }
 
 // Eliminar item
-/* let itemId = 1;
 
-async function deleteItem(itemId) {
-    const res = await fetch("http://localhost/items/" + itemId, {
+
+async function deleteItem(id) {
+    const res = await fetch("http://localhost/items/" + id, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -65,7 +89,7 @@ async function deleteItem(itemId) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            _method: "PUT"
+            _method: "DELETE"
         })
     })
         .then(res => res.json())
@@ -74,7 +98,7 @@ async function deleteItem(itemId) {
         });
 
     fetchDataLeer();
-} */
+}
 
 /**
  * Hace una petición a la API pppara obtener la lista  de items
@@ -105,6 +129,7 @@ function renderItem(responseItemJson) {
     responseItemJson.data.forEach(item => {
         //tmpl.querySelector("td").textContent = item.id;
         tmpl.querySelector('.item-id').textContent = item.id;
+        tmpl.querySelector('#btn-delete').dataset.id = item.id;
         tmpl.querySelector('.item-name').textContent = item.name;
         tmpl.querySelector('.item-completed').textContent = item.completed;
         let $clone = document.importNode(tmpl, true);
