@@ -66,9 +66,9 @@ class ItemController extends Controller
     /**
      * Función para eliminar items.
      */
-    public function destroy(Item $item)
+    public function destroy($id)
     {
-        $item = Item::find($item);
+        $item = Item::find($id);
         $item->delete();
     }
 }

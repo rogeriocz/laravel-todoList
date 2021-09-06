@@ -57,7 +57,7 @@
                                                 <button class="btn btn-shadow btn-warning btn-sm">Editar</button>
                                             </form>
                                             <form action="{urlDelete}">
-                                                <button class="btn btn-shadow btn-danger btn-sm">Elimiinar</button>
+                                                <a data-id="" id="btn-delete" class="btn btn-shadow btn-danger btn-sm btnBorrar">Elimiinar</a>
                                             </form>
                                             </div>
                                         </td>
