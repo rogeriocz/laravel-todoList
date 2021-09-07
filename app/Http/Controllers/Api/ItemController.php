@@ -19,8 +19,15 @@ class ItemController extends Controller
     public function destroy($id)
     {
         $item = Item::find($id);
-        $item->delete();
+        if($item){
+            $item->delete();
+            return json_encode(["msg" => "Tarea eliminada"]);
+        }else{
+            /* return response()->json(error);
+            return response()->json(null); */
+        }
 
-        return json_encode(["msg" => "Tarea eliminada"]);
+
+
     }
 }
