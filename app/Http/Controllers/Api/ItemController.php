@@ -21,10 +21,14 @@ class ItemController extends Controller
         $item = Item::find($id);
         if($item){
             $item->delete();
+            //return ['success' => true];
             return json_encode(["msg" => "Tarea eliminada"]);
+            return json_encode(['success' => true]);
+
         }else{
             /* return response()->json(error);
             return response()->json(null); */
+
         }
 
 
