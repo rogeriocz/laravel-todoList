@@ -76,6 +76,7 @@ function clearInput() {
     const fila  = form.firstElementChild
     const id = fila.getAttribute('data-id')
     console.log(id)
+
     deleteItem(id);
  });
 
@@ -95,7 +96,7 @@ function clearInput() {
             _method: "DELETE"
         })
     })
-        .then((res) => res.json())
+        .then((res) => res.text())
         .then((response) => {
             console.log(response);
         });
@@ -122,8 +123,8 @@ function clearInput() {
 } */
 
 /**
- * Hace una petición a la API pppara obtener la lista  de items
- * y mostrarlos al usuarioo.
+ * Hace una petición a la API para obtener la lista  de items
+ * y mostrarlos al usuario.
  */
 
 const fetchDataLeer = async () => {
