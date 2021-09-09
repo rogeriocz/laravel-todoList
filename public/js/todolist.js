@@ -84,8 +84,8 @@ function clearInput() {
  * Funcion para eliminar items
  *
  */
- function deleteItem(id) {
-   fetch("/items/" + id, {
+ async function deleteItem(id) {
+   await fetch("/items/" + id, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -96,31 +96,17 @@ function clearInput() {
             _method: "DELETE"
         })
     })
-        .then((res) => res.text())
-        .then((response) => {
+        .then( res => res.text())
+        .then( response => {
             console.log(response);
+        })
+        .catch( error => {
+            console.error('Hay un error:');
+            console.error(error);
         });
         fetchDataLeer();
     }
-/* async function deleteItem(id) {
-    const res = await fetch("http://localhost/items/" + id, {
-        method: "POST",
-        mode: "cors",
-        headers: {
-            "X-CSRF-TOKEN": _token.value,
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            _method: "DELETE"
-        })
-    })
-        .then(res => res.json())
-        .then(response => {
-            console.log(response);
-        });
 
-    fetchDataLeer();
-} */
 
 /**
  * Hace una petición a la API para obtener la lista  de items
