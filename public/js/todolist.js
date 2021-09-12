@@ -1,7 +1,8 @@
 /**
  * VARIABLES
  */
-const urlList = "http://localhost/api/items";
+const ApiUrlItems = "http://localhost/api/items";
+const url = "/items/"; // variable url. para crear, editar y eliminar
 const formularioAgregarTodolist = document.getElementById("formulario-add");
 const formularioAddEdit = document.getElementById("form-add-edit");
 const todoList = document.getElementById("todo-list");
@@ -39,7 +40,7 @@ async function addTodo() {
 
     // /items ->   doominioActual/items (indeppendientemente ddde dónde esttés)
     // items -> / -> pero si estás en oraaa ruta /abc -> /abc/items
-    const res = await fetch("http://localhost/items", {
+    const res = await fetch(url, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -89,9 +90,8 @@ function clearInput() {
     const statuForm = fila.children[2].innerHTML
     inputNameEdit.value = nameForm
 
-    //const fila = form.firstElementChild
-    //const id = fila.getAttribute('data-id')
-    console.log(`ID: ${idForm} - Name: ${nameForm} - status: ${statuForm}`)
+
+    //console.log(`ID: ${idForm} - Name: ${nameForm} - status: ${statuForm}`)
     //console.log(id)
  })
 
@@ -102,7 +102,7 @@ function clearInput() {
  formularioAddEdit.addEventListener('submit', (e) => {
     e.preventDefault()
 
-    fetch("/items/" + idForm, {
+    fetch( url + idForm, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -135,7 +135,7 @@ function clearInput() {
  *
  */
  async function deleteItem(id) {
-   await fetch("/items/" + id, {
+   await fetch( url + id, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -165,7 +165,7 @@ function clearInput() {
 
 const fetchDataLeer = async () => {
     try {
-        const res = await fetch(urlList)
+        const res = await fetch(ApiUrlItems)
             .then(respuesta => respuesta.json())
             // JSON -> Data -> Renderiza informacion del navegador
             .then(responseItemJson => {
