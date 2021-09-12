@@ -54,7 +54,7 @@
                                         <td>
                                             <div class="btn-group mb-2" role="group" aria-label="Basic example">
                                             <form action="{urlEdit}">
-                                                <button class="btn btn-shadow btn-warning btn-sm">Editar</button>
+                                                <a data-id="" id="btn-edit" data-toggle="modal" data-target="#Edit-Item" class="btn btn-shadow btn-warning btn-sm btnEditar">Editar</a>
                                             </form>
                                             <form action="{urlDelete}">
                                                 <a data-id="" id="btn-delete" class="btn btn-shadow btn-danger btn-sm btnBorrar">Elimiinar</a>
@@ -77,6 +77,31 @@
 
     </div>
 
+    <div id="Edit-Item" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Edit item</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-add-edit">
+                        <div class="form-group">
+                            <label class="form-name-item" for="inputNameEdit">Name</label>
+                            <input type="text" class="form-control" id="inputNameEdit"  placeholder="Name">
+                        </div>
+
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn  btn-primary">Actualizar</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
 
 @endsection
 

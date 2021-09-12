@@ -52,15 +52,16 @@ class ItemController extends Controller
 
     /**
      * Función para actualizar items.
+     *
+     * returna mensaje en formato json
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $completed = true;
-        $item = Item::find($request->id);
+       $item = Item::find($id);
         $item->name = $request->name;
-        $item->completed = $completed;
+        $item->save();
 
-        return $item;
+        return json_encode(["msg" => "Tarea Actualizada"]);
     }
 
     /**
