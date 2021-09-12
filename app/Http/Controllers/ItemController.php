@@ -27,7 +27,7 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        $completed = true;
+
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -42,7 +42,6 @@ class ItemController extends Controller
         }else{
             $item = new Item();
             $item->name = $request->input('name');
-            $item->completed = $completed;
             $item->save();
 
             return json_encode(["msg" => "Tarea agregada"]);
